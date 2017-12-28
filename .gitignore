@@ -1,0 +1,13 @@
+/.project
+/backend/web/assets
+/frontend/web/assets
+/backend/runtime
+/frontend/runtime
+/common/config/main-local.php
+/.idea
+/vendor
+composer.lock
+/frontend/views/layouts/main.php.backup
+/frontend/views/layouts/footer.php.backup
+/frontend/views/layouts/navbar.php.backup
+/backend/config/main-local.php
