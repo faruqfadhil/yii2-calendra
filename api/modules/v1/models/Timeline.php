@@ -32,8 +32,18 @@ namespace api\modules\v1\models {
         public function rules()
         {
             return [
-                [['name', 'description', 'tanggal'], 'required']
+                [['id_event','name', 'description', 'tanggal'], 'required']
             ];
+        }
+        public function beforeSave($insert)
+        {
+            if (!parent::beforeSave($insert)) {
+                return false;
+            }else{
+                $this->flag=1;
+                return true;
+            }
+            return true;
         }
 
 //

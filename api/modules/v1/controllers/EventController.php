@@ -4,6 +4,7 @@ namespace api\modules\v1\controllers;
 
 use yii\filters\VerbFilter;
 use yii\rest\ActiveController;
+use yii\web\UploadedFile;
 
 /**
  * Country Controller API
@@ -122,6 +123,31 @@ public function actionGetticket($id){
     }
 
 }
+public function actionCreatenew()
+  {
+      $model = new \api\modules\v1\models\Event();
+      $model->load(\Yii::$app->request->post(), '');
+     
+      $model->upload = UploadedFile::getInstanceByName('upload');
+    // return $model;
+ 
+      if ($model->save()) {
+        return [
+            "status"=>"sukses",
+            "data" =>array_filter($model->attributes)
+        ];
+      } 
+      else
+      {
+        return [
+            "status"=>"gagal",
+            "error_code"=>400,
+            "errors"=>$model->errors,
+            "data" =>null
+        ];
+      }
+ 
+  }
 
     public $modelClass = 'api\modules\v1\models\Event';
 }

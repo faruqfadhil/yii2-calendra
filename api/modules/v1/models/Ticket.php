@@ -32,7 +32,7 @@ namespace api\modules\v1\models {
         public function rules()
         {
             return [
-                [['name', 'description', 'price','jumlah','kategori'], 'required']
+                [['name', 'description', 'price','jumlah','kategori','id_event'], 'required']
             ];
         }
 

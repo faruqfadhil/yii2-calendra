@@ -49,6 +49,29 @@ class TimelineController extends ActiveController
     }
 
 }
+public function actionCreatenew()
+  {
+      $model = new \api\modules\v1\models\Timeline();
+      $model->load(\Yii::$app->request->post(), '');
+    // return $model;
+ 
+      if ($model->save()) {
+        return [
+            "status"=>"sukses",
+            "data" =>array_filter($model->attributes)
+        ];
+      } 
+      else
+      {
+        return [
+            "status"=>"gagal",
+            "error_code"=>400,
+            "errors"=>$model->errors,
+            "data" =>null
+        ];
+      }
+ 
+  }
 
     public $modelClass = 'api\modules\v1\models\Timeline';
 }
